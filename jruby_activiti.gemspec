@@ -23,4 +23,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "jbundler"
   spec.add_development_dependency "minitest"
+
+  spec.add_dependency "jbundler"
 end

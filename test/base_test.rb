@@ -1,8 +1,5 @@
 require 'test_helper'
 
-require "jbundler"
-
-Bundler.require "activiti-engine"
 Bundler.require "h2"
 
 class BaseTest < Minitest::Test
