@@ -1,6 +1,6 @@
 # JrubyActiviti
 
-Wrap Activiti BPM in a gem. So you can directly access Activiti BPM in Ruby Web Application.
+Wrapping Activiti BPM in a gem. So you can directly access Activiti BPM in Ruby Web Application.
 Inspired by https://github.com/boberetezeke/jruby-activiti.
 
 ## Installation
@@ -29,7 +29,7 @@ jar 'com.h2database:h2', '>= 1.4'
 $ jbundle
 ```
 
-Create activiti config file. config/activiti.cfg.xml
+Create activiti config file. `config/activiti.cfg.xml`
 ```
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
