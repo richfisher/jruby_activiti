@@ -1,6 +1,7 @@
 # JrubyActiviti
 
-Wrap activiti in a gem. So you can directly access activiti in Ruby Web Application.
+Wrap Activiti BPM in a gem. So you can directly access Activiti BPM in Ruby Web Application.
+Inspired by https://github.com/boberetezeke/jruby-activiti.
 
 ## Installation
 
@@ -28,7 +29,7 @@ jar 'com.h2database:h2', '>= 1.4'
 $ jbundle
 ```
 
-Now, You can direct access activiti in ROR.
+Now, You can access Activiti directly.
 
 ```
 configuration = Java::OrgActivitiEngine::ProcessEngineConfiguration.
