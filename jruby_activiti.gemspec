@@ -6,10 +6,10 @@ require 'jruby_activiti/version'
 Gem::Specification.new do |spec|
   spec.name          = "jruby_activiti"
   spec.version       = JrubyActiviti::VERSION
-  spec.authors       = ["TODO: Write your name"]
-  spec.email         = ["TODO: Write your email address"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.authors       = ["richfisher"]
+  spec.email         = ["richfisher.pan@gmail.com"]
+  spec.summary       = %q{Gem wrapper for Activiti BPM.}
+  spec.description   = %q{Gem wrapper for Activiti BPM.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
