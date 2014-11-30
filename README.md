@@ -31,7 +31,8 @@ $ jbundle
 Now, You can direct access activiti in ROR.
 
 ```
-configuration = Java::OrgActivitiEngine::ProcessEngineConfiguration.createProcessEngineConfigurationFromResource("config/activiti.cfg.xml")
+configuration = Java::OrgActivitiEngine::ProcessEngineConfiguration.
+  createProcessEngineConfigurationFromResource("config/activiti.cfg.xml")
 ```
 
 ## Contributing
