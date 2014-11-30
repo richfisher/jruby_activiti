@@ -25,4 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest"
 
   spec.add_dependency "jbundler"
+  spec.requirements << "jar 'org.activiti:activiti-engine', '>= 5.16'"
 end
