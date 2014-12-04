@@ -45,12 +45,17 @@ Create activiti config file. `config/activiti.cfg.xml`
 </beans>
 ```
 
-Now, You can access Activiti directly.
+Now, You can access Activiti directly by using `ActivitiEngine`. For example, in a Rails controller
 
 ```
-configuration = Java::OrgActivitiEngine::ProcessEngineConfiguration.
-  createProcessEngineConfigurationFromResource("config/activiti.cfg.xml")
+repositoryService = ActivitiEngine.getRepositoryService()
+repositoryService.createDeployment().
+  addClasspathResource("config/your_bpm_xml_file.bpmn20.xml").
+  deploy()
 ```
+
+## Warning
+Do not create Activiti Engine in a Rails application. Otherwise you will get exception `log writing failed. Bad file descriptor - Bad file descriptor`
 
 ## Contributing
 
