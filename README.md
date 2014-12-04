@@ -55,7 +55,7 @@ repositoryService.createDeployment().
 ```
 
 ## Warning
-Do not create Activiti Engine in a Rails application. Otherwise you will get exception `log writing failed. Bad file descriptor - Bad file descriptor`
+Do not create Activiti Engine in a Rails application repeatedly. Otherwise you will get exception `log writing failed. Bad file descriptor - Bad file descriptor`
 
 ## Contributing
 
