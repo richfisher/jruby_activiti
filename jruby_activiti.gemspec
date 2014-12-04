@@ -26,4 +26,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "jbundler"
   spec.requirements << "jar 'org.activiti:activiti-engine', '>= 5.16'"
+  spec.requirements << "jar 'org.slf4j:slf4j-log4j12', '>= 1.7'"
 end
