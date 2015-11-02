@@ -3,6 +3,9 @@
 Wrapping Activiti BPM in a gem. So you can directly access Activiti BPM in Ruby Web Application.
 Inspired by https://github.com/boberetezeke/jruby-activiti.
 
+## Test Environments
+JRuby-9.0.3.0, Activiti-5.18.0
+
 ## Installation
 
 Git clone this project.
@@ -13,21 +16,21 @@ Add this line to your application's Gemfile:
 gem 'jruby_activiti', path: 'xxx'
 ```
 
+create a `Jarfile`. Example:
+
+```
+jar 'org.activiti:activiti-engine', '~> 5.18'
+jar 'org.slf4j:slf4j-log4j12', '>= 1.7'
+jar 'com.h2database:h2', '>= 1.4'
+``` 
+
 And then execute:
 ```
-$ bundle
-$ touch Jarfile
-$ jbundle
+$ bundle install
+$ jbundle install
 ```
 
 ## Usage
-Add db jar in Jarfile. Example:
-```
-jar 'com.h2database:h2', '>= 1.4'
-```
-```
-$ jbundle
-```
 
 Create activiti config file. `config/activiti.cfg.xml`
 ```
