@@ -3,18 +3,24 @@ require 'test_helper'
 Bundler.require "h2"
 
 class BaseTest < Minitest::Test
-  def test_process
-    @process_engine_configuration = Java::OrgActivitiEngine::ProcessEngineConfiguration.createProcessEngineConfigurationFromResource("test/activiti.cfg.xml")
-    @process_engine = @process_engine_configuration.buildProcessEngine
-    @repositoryService = @process_engine.getRepositoryService()
-    @repositoryService.createDeployment().
+  def deploy_vacation_request
+    repositoryService = ActivitiEngine.getRepositoryService()
+    repositoryService.createDeployment().
       addClasspathResource("test/VacationRequest.bpmn20.xml").
-      deploy()
+      deploy()  end
 
-    count = @repositoryService.createProcessDefinitionQuery().count()
-    assert_equal 1, count
+  def test_create_deploy
+    repositoryService = ActivitiEngine.getRepositoryService()
+    before_count = repositoryService.createProcessDefinitionQuery().count()
+    deploy_vacation_request
+    after_count = repositoryService.createProcessDefinitionQuery().count()
+    assert_equal 1, after_count - before_count
+  end
 
-    runtime_service = @process_engine.getRuntimeService();
+  def test_create_process_instance
+    deploy_vacation_request
+
+    runtime_service = ActivitiEngine.getRuntimeService();
     variables = {
       'employeeName' => "Kermit",
       'numberOfDays' =>  4,
@@ -26,13 +32,18 @@ class BaseTest < Minitest::Test
 
     instance_count = runtime_service.createProcessInstanceQuery().count()
     assert_equal 1, instance_count
+  end
 
-    task_service = @process_engine.getTaskService();
+  def test_task_process
+    runtime_service = ActivitiEngine.getRuntimeService();
+    runtime_service.startProcessInstanceByKey("vacationRequest", {});
+
+    task_service = ActivitiEngine.getTaskService();
     tasks = task_service.createTaskQuery().taskCandidateGroup("management").list();
     task = tasks.first
     assert_equal 'Handle vacation request', task.getName
 
-    task_service = @process_engine.getTaskService();
+    task_service = ActivitiEngine.getTaskService();
     tasks = task_service.createTaskQuery().taskCandidateGroup("management").list();
     task = tasks.first
     task_variables = {
