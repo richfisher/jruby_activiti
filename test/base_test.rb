@@ -35,6 +35,8 @@ class BaseTest < Minitest::Test
   end
 
   def test_task_process
+    deploy_vacation_request
+    
     runtime_service = ActivitiEngine.getRuntimeService();
     runtime_service.startProcessInstanceByKey("vacationRequest", {});
 
