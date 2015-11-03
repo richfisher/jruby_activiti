@@ -7,7 +7,8 @@ class BaseTest < Minitest::Test
     repositoryService = ActivitiEngine.getRepositoryService()
     repositoryService.createDeployment().
       addClasspathResource("test/VacationRequest.bpmn20.xml").
-      deploy()  end
+      deploy()
+  end
 
   def test_create_deploy
     repositoryService = ActivitiEngine.getRepositoryService()
