@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = JrubyActiviti::VERSION
   spec.authors       = ["richfisher"]
   spec.email         = ["richfisher.pan@gmail.com"]
-  spec.summary       = %q{Gem wrapper for Activiti BPM.}
-  spec.description   = %q{Gem wrapper for Activiti BPM.}
-  spec.homepage      = ""
+  spec.summary       = "Interact with Activiti BPM in JRuby, http://activiti.org/"
+  spec.description   = spec.summary
+  spec.homepage      = "https://github.com/richfisher/jruby_activiti"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -18,10 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "jbundler"
-  spec.add_development_dependency "minitest"
+  spec.add_development_dependency "minitest", '>= 5.8'
 
-  spec.add_dependency "jbundler"
+  spec.add_dependency "jbundler", '>= 0.9'
 end

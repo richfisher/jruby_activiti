@@ -13,7 +13,7 @@ Git clone this project.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'jruby_activiti', path: 'xxx'
+gem 'jruby_activiti'
 ```
 
 create a `Jarfile`. Example:
