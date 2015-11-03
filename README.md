@@ -1,14 +1,11 @@
 # JrubyActiviti
 
-Wrapping Activiti BPM in a gem. So you can directly access Activiti BPM in Ruby Web Application.
-Inspired by https://github.com/boberetezeke/jruby-activiti.
+You can directly access Activiti BPM in Ruby Web Application.
 
 ## Test Environments
 JRuby-9.0.3.0, Activiti-5.18.0
 
 ## Installation
-
-Git clone this project.
 
 Add this line to your application's Gemfile:
 
@@ -59,6 +56,9 @@ repositoryService.createDeployment().
 
 ## Warning
 Do not create Activiti Engine in a Rails application repeatedly. Otherwise you will get exception `log writing failed. Bad file descriptor - Bad file descriptor`
+
+## Thanks
+Inspired by https://github.com/boberetezeke/jruby-activiti
 
 ## Contributing
 
