@@ -1,6 +1,6 @@
 # JrubyActiviti
 
-You can directly access Activiti BPM in Ruby Web Application.
+You can directly access Activiti BPM in JRuby Application.
 
 ## Test Environments
 JRuby-9.0.3.0, Activiti-5.18.0
