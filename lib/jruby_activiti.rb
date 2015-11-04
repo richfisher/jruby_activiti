@@ -4,10 +4,11 @@ require "jbundler"
 Bundler.require "activiti-engine"
 
 ActivitiConfigPath ||= "config/activiti.cfg.xml"
-configuration = Java::OrgActivitiEngine::ProcessEngineConfiguration.
-  createProcessEngineConfigurationFromResource(ActivitiConfigPath)
-ActivitiEngine = configuration.buildProcessEngine
 
 module JrubyActiviti
-  # Your code goes here...
+  def self.get_engine
+    configuration = Java::OrgActivitiEngine::ProcessEngineConfiguration.
+      createProcessEngineConfigurationFromResource(ActivitiConfigPath)
+    configuration.buildProcessEngine
+  end
 end

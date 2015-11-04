@@ -2,6 +2,8 @@ require 'test_helper'
 
 Bundler.require "h2"
 
+ActivitiEngine = JrubyActiviti.get_engine
+
 class BaseTest < Minitest::Test
   def deploy_vacation_request
     repositoryService = ActivitiEngine.getRepositoryService()

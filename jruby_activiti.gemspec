@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = JrubyActiviti::VERSION
   spec.authors       = ["richfisher"]
   spec.email         = ["richfisher.pan@gmail.com"]
-  spec.summary       = "Interact with Activiti BPM in JRuby, http://activiti.org/"
+  spec.summary       = "Interact with Activiti BPM in JRuby, https://github.com/richfisher/jruby_activiti"
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/richfisher/jruby_activiti"
   spec.license       = "MIT"
