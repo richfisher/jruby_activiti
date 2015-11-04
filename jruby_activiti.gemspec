@@ -6,6 +6,7 @@ require 'jruby_activiti/version'
 Gem::Specification.new do |spec|
   spec.name          = "jruby_activiti"
   spec.version       = JrubyActiviti::VERSION
+  spec.platform      = "java"
   spec.authors       = ["richfisher"]
   spec.email         = ["richfisher.pan@gmail.com"]
   spec.summary       = "Interact with Activiti BPM in JRuby, https://github.com/richfisher/jruby_activiti"
