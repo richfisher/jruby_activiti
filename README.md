@@ -13,39 +13,26 @@ Add this line to your application's Gemfile:
 gem 'jruby_activiti'
 ```
 
-create a `Jarfile`. Example:
+Run the `bundle install` command to install it.
+
+After you install and add it to your Gemfile, you need to run the generator:
 
 ```
-jar 'org.activiti:activiti-engine', '~> 5.18'
-jar 'org.slf4j:slf4j-log4j12', '>= 1.7'
-jar 'com.h2database:h2', '>= 1.4'
-``` 
+rails g jruby_activiti:install
+```
 
-And then execute:
+It will create 3 files, edit the config/activiti.cfg.xml as your need.
+
 ```
-$ bundle install
-$ jbundle install
+create  Jarfile
+create  config/activiti.cfg.xml
+create  config/initializers/jruby_activiti.rb
 ```
+
+And then execute `jbundle install`
 
 ## Usage
-
-Create activiti config file. `config/activiti.cfg.xml`
-```
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-  <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
-    <property name="jdbcUrl" value="jdbc:h2:mem:activiti;DB_CLOSE_DELAY=1000" />
-    <property name="jdbcDriver" value="org.h2.Driver" />
-    <property name="jdbcUsername" value="sa" />
-    <property name="jdbcPassword" value="" />
-  </bean>
-
-</beans>
-```
-
-Now, You can access Activiti directly by using `ActivitiEngine`. For example, in a Rails controller
+You can access Activiti directly by using `ActivitiEngine`. For example, in a Rails controller
 
 ```
 repositoryService = ActivitiEngine.getRepositoryService()
