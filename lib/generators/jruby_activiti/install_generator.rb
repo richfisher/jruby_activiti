@@ -8,7 +8,7 @@ module JrubyActiviti
       desc "Creates a initializer and copy config files to your application."
 
       def create_jarfile
-        copy_file "Jarfile", "Jarfile"
+        copy_file "../../../../Jarfile", "Jarfile"
       end
 
       def create_config
