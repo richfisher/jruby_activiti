@@ -7,7 +7,7 @@ Activiti = JrubyActiviti::Activiti
 class BaseTest < Minitest::Test
   def deploy_vacation_request
     Activiti::RepositoryService.createDeployment().
-      addClasspathResource("test/VacationRequest.bpmn20.xml").
+      addClasspathResource("test/resources/VacationRequest.bpmn20.xml").
       deploy()
   end
 

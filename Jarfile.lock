@@ -1,25 +1,25 @@
 ---
 :runtime:
-- org.activiti:activiti-bpmn-model:jar:5.18.0
+- org.activiti:activiti-bpmn-converter:jar:5.19.0
 - org.apache.commons:commons-email:jar:1.4
-- org.activiti:activiti-bpmn-converter:jar:5.18.0
+- org.activiti:activiti-bpmn-model:jar:5.19.0
+- org.activiti:activiti-engine:jar:5.19.0
 - com.sun.mail:javax.mail:jar:1.5.2
 - log4j:log4j:jar:1.2.17
 - org.slf4j:slf4j-api:jar:1.7.6
 - org.yaml:snakeyaml:jar:1.14
 - com.fasterxml.jackson.core:jackson-databind:jar:2.2.3
-- org.activiti:activiti-image-generator:jar:5.18.0
 - org.springframework:spring-core:jar:4.1.5.RELEASE
 - commons-logging:commons-logging:jar:1.2
 - org.slf4j:jcl-over-slf4j:jar:1.7.6
+- org.activiti:activiti-process-validation:jar:5.19.0
 - org.mybatis:mybatis:jar:3.2.5
 - com.h2database:h2:jar:1.4.190
-- org.activiti:activiti-process-validation:jar:5.18.0
+- org.activiti:activiti-image-generator:jar:5.19.0
 - com.fasterxml.jackson.core:jackson-annotations:jar:2.2.3
 - joda-time:joda-time:jar:2.6
 - javax.activation:activation:jar:1.1.1
 - org.apache.commons:commons-lang3:jar:3.3.2
 - com.fasterxml.jackson.core:jackson-core:jar:2.2.3
 - org.slf4j:slf4j-log4j12:jar:1.7.12
-- org.activiti:activiti-engine:jar:5.18.0
 - org.springframework:spring-beans:jar:4.1.5.RELEASE

@@ -1,5 +1,5 @@
 module JrubyActiviti
-  ConfigPath = "test/activiti.cfg.xml"
+  ConfigPath = "test/resources/activiti.cfg.xml"
 end
 
 require 'jruby_activiti'

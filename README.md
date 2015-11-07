@@ -3,7 +3,7 @@
 You can directly access Activiti BPM in JRuby Application.
 
 ## Test Environment
-JRuby-9.0.3.0, Activiti-5.18.0
+JRuby-9.0.3.0, Activiti-5.19.0
 
 ## Installation
 
@@ -34,15 +34,15 @@ And then execute `jbundle install`
 ## Usage
 You can access Activiti directly by using `Activiti`. For example, in a Rails controller
 
-```
-Activiti::Engine
-Activiti::RepositoryService
-Activiti::RuntimeService
-Activiti::TaskService
-Activiti::ManagementService
-Activiti::IdentityService
-Activiti::HistoryService
-Activiti::FormService
+``` ruby
+# Activiti::Engine
+# Activiti::RepositoryService
+# Activiti::RuntimeService
+# Activiti::TaskService
+# Activiti::ManagementService
+# Activiti::IdentityService
+# Activiti::HistoryService
+# Activiti::FormService
 
 Activiti::RepositoryService.createDeployment().
   addClasspathResource("config/your_bpm_xml_file.bpmn20.xml").
