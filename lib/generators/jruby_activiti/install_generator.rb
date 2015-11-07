@@ -11,6 +11,10 @@ module JrubyActiviti
         copy_file "../../../../Jarfile", "Jarfile"
       end
 
+      def create_log4j_config
+        copy_file "../../../../log4j.properties", "log4j.properties"
+      end
+
       def create_config
         copy_file "activiti.cfg.xml", "config/activiti.cfg.xml"
       end

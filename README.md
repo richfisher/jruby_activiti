@@ -21,10 +21,11 @@ You need to run the generator:
 rails g jruby_activiti:install
 ```
 
-It will create 3 files, edit the config/activiti.cfg.xml as your need.
+It will create 4 files, edit the log4j.properties, config/activiti.cfg.xml as your need.
 
 ```
 create  Jarfile
+create  log4j.properties
 create  config/activiti.cfg.xml
 create  config/initializers/jruby_activiti.rb
 ```
