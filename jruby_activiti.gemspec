@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   # spec.platform      = "java"
   spec.authors       = ["richfisher"]
   spec.email         = ["richfisher.pan@gmail.com"]
-  spec.summary       = "Access and interact with Activiti BPM in JRuby directly, https://github.com/richfisher/jruby_activiti"
+  spec.summary       = "Access and interact with Activiti BPM in JRuby/Rails directly, https://github.com/richfisher/jruby_activiti"
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/richfisher/jruby_activiti"
   spec.license       = "MIT"
@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "minitest", '>= 5.8'
+  spec.add_development_dependency "minitest", '~> 5.8'
 
-  spec.add_dependency "jbundler", '>= 0.9'
+  spec.add_dependency "jbundler", '~> 0.9'
 end
