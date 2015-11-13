@@ -6,14 +6,16 @@ Bundler.require "activiti-engine"
 module JrubyActiviti
   ConfigPath ||= "config/activiti.cfg.xml"
 
-  def self.get_engine
+  def self.build_engine
+    return @engine if @engine
+
     configuration = Java::OrgActivitiEngine::ProcessEngineConfiguration.
       createProcessEngineConfigurationFromResource(ConfigPath)
-    configuration.buildProcessEngine
+    @engine = configuration.buildProcessEngine
   end
 
   module Activiti
-    Engine              = JrubyActiviti.get_engine
+    Engine              = JrubyActiviti.build_engine
     RepositoryService   = Engine.getRepositoryService()
     RuntimeService      = Engine.getRuntimeService()
     TaskService         = Engine.getTaskService()

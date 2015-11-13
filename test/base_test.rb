@@ -4,55 +4,72 @@ Bundler.require "h2"
 
 Activiti = JrubyActiviti::Activiti
 
+def assert_difference(cmd, target_count)
+  count1 = eval(cmd)
+  yield if block_given?
+  count2 = eval(cmd)
+
+  assert_equal target_count, count2-count1 
+end
+
 class BaseTest < Minitest::Test
+  def before_setup
+    @@deployed ||= deploy_vacation_request
+  end
+
   def deploy_vacation_request
     Activiti::RepositoryService.createDeployment().
       addClasspathResource("test/resources/VacationRequest.bpmn20.xml").
       deploy()
   end
 
-  def test_create_deploy
-    before_count = Activiti::RepositoryService.createProcessDefinitionQuery().count()
-    deploy_vacation_request
-    after_count = Activiti::RepositoryService.createProcessDefinitionQuery().count()
-    assert_equal 1, after_count - before_count
-  end
-
-  def test_create_process_instance
-    deploy_vacation_request
-
-    variables = {
+  def task_variables
+    return {
       'employeeName' => "Kermit",
       'numberOfDays' =>  4,
       'vacationMotivation' => "I'm really tired!"
     }
-    assert_output(/hello, this is a script task/) do
-      Activiti::RuntimeService.startProcessInstanceByKey("vacationRequest", variables);
-    end
-
-    instance_count = Activiti::RuntimeService.createProcessInstanceQuery().count()
-    assert_equal 1, instance_count
   end
 
-  def test_task_process
-    deploy_vacation_request
-    
-    Activiti::RuntimeService.startProcessInstanceByKey("vacationRequest", {});
+  def test_create_deploy
+    assert_difference 'Activiti::RepositoryService.createProcessDefinitionQuery().count()', 1 do
+      deploy_vacation_request
+    end
+  end
+
+  def test_create_process_instance
+    assert_difference 'Activiti::RuntimeService.createProcessInstanceQuery().count()', 1 do
+      Activiti::RuntimeService.startProcessInstanceByKey("vacationRequest", task_variables);
+    end
+  end
+
+  def test_create_process_instance_with_output
+    assert_output(/hello, this is a script task/) do
+      Activiti::RuntimeService.startProcessInstanceByKey("vacationRequest", task_variables);
+    end
+  end
+
+  def test_task_query
+    Activiti::RuntimeService.startProcessInstanceByKey("vacationRequest", task_variables);
 
     tasks = Activiti::TaskService.createTaskQuery().taskCandidateGroup("management").list();
-    task = tasks.first
-    assert_equal 'Handle vacation request', task.getName
+    task = tasks.first()
+    assert_equal 'Handle vacation request', task.getName()
+  end
+
+  def test_complete_task
+    Activiti::RuntimeService.startProcessInstanceByKey("vacationRequest", task_variables);
 
     tasks = Activiti::TaskService.createTaskQuery().taskCandidateGroup("management").list();
-    task = tasks.first
+    task = tasks.first()
     task_variables = {
       "vacationApproved" => "false",
       "managerMotivation" => "We have a tight deadline!"
     }
-    Activiti::TaskService.complete(task.getId, task_variables);
+    Activiti::TaskService.complete(task.getId(), task_variables);
 
     tasks = Activiti::TaskService.createTaskQuery().taskAssignee("Kermit").list();
     task = tasks.first
-    assert_equal 'Adjust vacation request', task.getName
+    assert_equal 'Adjust vacation request', task.getName()
   end
 end
