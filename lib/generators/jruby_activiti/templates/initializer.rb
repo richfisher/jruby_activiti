@@ -1,1 +1,1 @@
-Activiti = JrubyActiviti::Activiti
+Activiti = JrubyActiviti.build_engine

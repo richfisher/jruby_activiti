@@ -2,7 +2,7 @@ require 'test_helper'
 
 Bundler.require "h2"
 
-Activiti = JrubyActiviti::Activiti
+Activiti = JrubyActiviti.build_engine
 
 def assert_difference(cmd, target_count)
   count1 = eval(cmd)

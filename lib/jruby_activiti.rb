@@ -7,22 +7,30 @@ module JrubyActiviti
   ConfigPath ||= "config/activiti.cfg.xml"
 
   def self.build_engine
-    return @engine if @engine
-
-    configuration = Java::OrgActivitiEngine::ProcessEngineConfiguration.
-      createProcessEngineConfigurationFromResource(ConfigPath)
-    @engine = configuration.buildProcessEngine
+    Activiti.build_engine
   end
 
   module Activiti
-    Engine              = JrubyActiviti.build_engine
-    RepositoryService   = Engine.getRepositoryService()
-    RuntimeService      = Engine.getRuntimeService()
-    TaskService         = Engine.getTaskService()
-    ManagementService   = Engine.getManagementService()
-    IdentityService     = Engine.getIdentityService()
-    HistoryService      = Engine.getHistoryService()
-    FormService         = Engine.getFormService()
+    def self.build_engine
+      return self if @engine
 
+      configuration = Java::OrgActivitiEngine::ProcessEngineConfiguration.
+        createProcessEngineConfigurationFromResource(ConfigPath)
+      @engine = configuration.buildProcessEngine
+      self.set_activiti_const
+
+      return self
+    end
+
+    def self.set_activiti_const
+      const_set 'Engine', @engine
+      const_set 'RepositoryService', @engine.getRepositoryService()
+      const_set 'RuntimeService', @engine.getRuntimeService()
+      const_set 'TaskService', @engine.getTaskService()
+      const_set 'ManagementService', @engine.getManagementService()
+      const_set 'IdentityService', @engine.getIdentityService()
+      const_set 'HistoryService', @engine.getHistoryService()
+      const_set 'FormService', @engine.getFormService()
+    end
   end
 end
