@@ -2,8 +2,6 @@ require 'test_helper'
 
 Bundler.require "h2"
 
-Activiti = JrubyActiviti.build_engine
-
 def assert_difference(cmd, target_count)
   count1 = eval(cmd)
   yield if block_given?
@@ -12,7 +10,7 @@ def assert_difference(cmd, target_count)
   assert_equal target_count, count2-count1 
 end
 
-class BaseTest < Minitest::Test
+class IntegrationTest < Minitest::Test
   def before_setup
     @@deployed ||= deploy_vacation_request
   end

@@ -7,11 +7,7 @@ JRuby-9.0.3.0, Activiti-5.19.0
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'jruby_activiti'
-```
+Edit your application's Gemfile, add `gem 'jruby_activiti'`, and must remove `gem 'therubyrhino'` line.
 
 Run the `bundle install` command to install it.
 
@@ -32,6 +28,7 @@ create  config/initializers/jruby_activiti.rb
 
 And then execute `jbundle install`
 
+
 ## Usage
 You can access Activiti directly by using `Activiti`. For example, in a Rails controller
 
@@ -50,8 +47,20 @@ Activiti::RepositoryService.createDeployment().
   deploy()
 ```
 
+## Enable Modeler in Rails
+add following line to config/routes.rb
+
+```
+mount JrubyActiviti::WebApp => "/activiti"
+```
+
+visit `localhost:3000/activiti`
+
 ## Warning
 Do not create Activiti Engine in a Rails application repeatedly. Otherwise you will get exception `log writing failed. Bad file descriptor - Bad file descriptor`
+
+## Known Issue
+`org.activiti:activiti-modeler` includes `org.apache.xmlgraphics:batik-transcoder`, that depends on outdated `org.mozilla:rhino`, which conflicts with rubygem `therubyrhino`. So you must to install `nodejs` in your machine and comment `gem 'therubyrhino'` in `Gemfile`.
 
 ## Thanks
 Inspired by https://github.com/boberetezeke/jruby-activiti
