@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'jruby_activiti'
 
 module JrubyActiviti
   class Web < Sinatra::Base
