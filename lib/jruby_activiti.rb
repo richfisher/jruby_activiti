@@ -1,5 +1,5 @@
 require "jruby_activiti/version"
-require "jruby_activiti/web_app"
+require "jruby_activiti/web"
 require File.dirname(__FILE__) + '/../java/target/jrubyactiviti-1.0.jar'
 
 require "jbundler"

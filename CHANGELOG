@@ -1,3 +1,9 @@
+## v2.0.0
+* Integrate Activiti Modeler
+* [TODO] Integrate Activiti Diagram Viewer
+* [TODO] Add Web View for models CRUD
+
+
 ## v1.0.0
 
 * Initial release

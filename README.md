@@ -1,9 +1,9 @@
 # JrubyActiviti
 
-You can directly access Activiti BPM in JRuby/Rails Application.
+Integrate Activiti BPM in JRuby/Rails, including Activiti Engine, Modeler and Diagram Viewer.
 
 ## Test Environment
-JRuby-9.0.3.0, Activiti-5.19.0
+JRuby-9.0.4.0, Activiti-5.19.0
 
 ## Installation
 
@@ -55,9 +55,6 @@ mount JrubyActiviti::WebApp => "/activiti"
 ```
 
 visit `localhost:3000/activiti`
-
-## Warning
-Do not create Activiti Engine in a Rails application repeatedly. Otherwise you will get exception `log writing failed. Bad file descriptor - Bad file descriptor`
 
 ## Known Issue
 `org.activiti:activiti-modeler` includes `org.apache.xmlgraphics:batik-transcoder`, that depends on outdated `org.mozilla:rhino`, which conflicts with rubygem `therubyrhino`. So you must to install `nodejs` in your machine and comment `gem 'therubyrhino'` in `Gemfile`.

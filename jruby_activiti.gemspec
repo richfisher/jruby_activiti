@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   # spec.platform      = "java"
   spec.authors       = ["richfisher"]
   spec.email         = ["richfisher.pan@gmail.com"]
-  spec.summary       = "Access and interact with Activiti BPM in JRuby/Rails directly, https://github.com/richfisher/jruby_activiti"
+  spec.summary       = "Integrate Activiti BPM in JRuby/Rails, including Activiti Engine, Modeler and Diagram Viewer. https://github.com/richfisher/jruby_activiti"
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/richfisher/jruby_activiti"
   spec.license       = "MIT"
