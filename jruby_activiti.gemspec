@@ -21,6 +21,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "minitest", '~> 5.8'
 
-  spec.add_dependency "jbundler", '~> 0.9'
-  spec.add_dependency "sinatra", '>= 0'
+  spec.add_dependency "jbundler"
+  spec.add_dependency "sinatra"
 end

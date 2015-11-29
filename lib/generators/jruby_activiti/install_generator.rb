@@ -22,6 +22,10 @@ module JrubyActiviti
       def create_initializer_file
         copy_file "initializer.rb", "config/initializers/jruby_activiti.rb"
       end
+
+      def add_routes
+        route "mount JrubyActiviti::Web => '/activiti' if defined?(JrubyActiviti)"
+      end
     end
   end
 end

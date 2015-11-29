@@ -13,7 +13,8 @@
 		<th>getCategory()</th>
 		<th>getCreateTime()</th>
 		<th>getLastUpdateTime()</th>
-		<th></th>
+		<th>Modeler</th>
+		<th>Deploy</th>
 	</tr>
 	<% for model in @models %>
 		<tr>
@@ -26,7 +27,8 @@
 			<td><%= model.getCategory() %></td>
 			<td><%= model.getCreateTime() %></td>
 			<td><%= model.getLastUpdateTime() %></td>
-			<td><a href="<%= uri("/modeler.html?modelId=#{model.getId()}") %>">edit</a></td>
+			<td><a href="<%= uri("/modeler.html?modelId=#{model.getId()}") %>">Edit in Modeler</a></td>
+			<td><a href="<%= uri("/models/#{model.getId()}/deploy") %>">Deploy</a></td>
 		</tr>
 	<% end %>
 </table>

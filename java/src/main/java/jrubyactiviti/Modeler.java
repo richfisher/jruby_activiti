@@ -18,14 +18,20 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.commons.lang3.StringUtils;
 
 public class Modeler {
-  final static String MODEL_ID = "modelId";
-  final static String MODEL_NAME = "name";
-  final static String MODEL_REVISION = "revision";
-  final static String MODEL_DESCRIPTION = "description";
+  final String MODEL_ID = "modelId";
+  final String MODEL_NAME = "name";
+  final String MODEL_REVISION = "revision";
+  final String MODEL_DESCRIPTION = "description";
 
-  private static ObjectMapper objectMapper = new ObjectMapper();
+  private RepositoryService repositoryService;
+  private ObjectMapper objectMapper;
 
-  public static void save(RepositoryService repositoryService, String modelId, HashMap<String, String> values) {
+  public Modeler(RepositoryService repositoryService) {
+    this.repositoryService = repositoryService;
+    this.objectMapper = new ObjectMapper();
+  }
+
+  public void save(String modelId, HashMap<String, String> values) {
     try {
       Model model = repositoryService.getModel(modelId);
       
@@ -60,7 +66,7 @@ public class Modeler {
     }
   }
 
-  public static ObjectNode show(RepositoryService repositoryService, String modelId) {
+  public ObjectNode show(String modelId) {
     ObjectNode modelNode = null;
     
     Model model = repositoryService.getModel(modelId);

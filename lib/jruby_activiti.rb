@@ -1,6 +1,7 @@
 require "jruby_activiti/version"
 require "jruby_activiti/web"
-require File.dirname(__FILE__) + '/jrubyactiviti-1.0.jar'
+# require File.dirname(__FILE__) + '/../java/target/jrubyactiviti-2.0.jar'
+require File.dirname(__FILE__) + '/jar/jrubyactiviti-2.0.jar'
 
 require "jbundler"
 Bundler.require "activiti-engine"

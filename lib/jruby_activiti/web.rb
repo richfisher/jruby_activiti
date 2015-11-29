@@ -2,24 +2,58 @@ require 'sinatra'
 
 module JrubyActiviti
   class Web < Sinatra::Base
+    set :root, File.expand_path(File.dirname(__FILE__) + "/../../web")
+    set :public_folder, proc { "#{root}/public" }
+    set :views, proc { "#{root}/views" }
+
     get "/" do
       redirect uri('/models')
     end
 
-    get "/activiti-explorer/service/model/:model_id/json" do
+    get "/service/model/:model_id/json" do
       model = Activiti::RepositoryService.createModelQuery().modelId(params['model_id']).singleResult()
-      Java::Jrubyactiviti::Modeler.show(Activiti::RepositoryService, model.getId()).to_s
+      modeler = Java::Jrubyactiviti::Modeler.new(Activiti::RepositoryService)
+      modeler.show(model.getId()).to_s
     end
 
-    get "/activiti-explorer/service/editor/stencilset" do
+    get "/service/editor/stencilset" do
       Java::Jrubyactiviti::StencilsetResource.getStencilset().to_s
     end
 
-    put "/activiti-explorer/service/model/:model_id/save" do
+    put "/service/model/:model_id/save" do
       model = Activiti::RepositoryService.createModelQuery().modelId(params['model_id']).singleResult()
       map = Activiti::Utils.hash_to_map(params)
-      Java::Jrubyactiviti::Modeler.save(Activiti::RepositoryService, model.getId(), map)
+      modeler = Java::Jrubyactiviti::Modeler.new(Activiti::RepositoryService)
+      modeler.save(model.getId(), map)
       200
+    end
+
+    get "/service/process-definition/:process_definition_id/diagram-layout" do
+      diagramer = Java::Jrubyactiviti::ProcessDiagram.new(
+        Activiti::RuntimeService,
+        Activiti::RepositoryService,
+        Activiti::HistoryService)
+      json = diagramer.getDiagramNode(nil, params[:process_definition_id]).to_s
+      "#{params[:callback]}(#{json})"
+    end
+
+    # seems not be used
+    get "/service/process-instance/:process_instance_id/diagram-layout" do
+      diagramer = Java::Jrubyactiviti::ProcessDiagram.new(
+        Activiti::RuntimeService,
+        Activiti::RepositoryService,
+        Activiti::HistoryService)
+      json = diagramer.getDiagramNode(params[:process_instance_id], nil).to_s
+      "#{params[:callback]}(#{json})"
+    end
+
+    get "/service/process-instance/:process_instance_id/highlights" do
+      highlighter = Java::Jrubyactiviti::ProcessInstanceHighlights.new(
+        Activiti::RuntimeService,
+        Activiti::RepositoryService,
+        Activiti::HistoryService)
+      json = highlighter.getHighlighted(params[:process_instance_id]).to_s
+      "#{params[:callback]}(#{json})"
     end
 
     get "/models" do

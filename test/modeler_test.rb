@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class ModelerTest < Minitest::Test
+  def setup
+    @modeler = Java::Jrubyactiviti::Modeler.new(Activiti::RepositoryService)
+  end
+
   def create_model
     model = Activiti::RepositoryService.newModel
     model.setName('modeler_test')
@@ -21,11 +25,11 @@ class ModelerTest < Minitest::Test
     map = Activiti::Utils.hash_to_map(hash)
 
     model = create_model
-    Java::Jrubyactiviti::Modeler.save(Activiti::RepositoryService, model.getId(), map)
+    @modeler.save(model.getId(), map)
   end
 
   def test_show
     model = create_model
-    assert Java::Jrubyactiviti::Modeler.show(Activiti::RepositoryService, model.getId())
+    assert @modeler.show(model.getId())
   end
 end

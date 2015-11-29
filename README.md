@@ -24,7 +24,10 @@ create  Jarfile
 create  log4j.properties
 create  config/activiti.cfg.xml
 create  config/initializers/jruby_activiti.rb
+route   mount JrubyActiviti::Web => '/activiti' if defined?(JrubyActiviti)
 ```
+
+Add db jar in Jarfile. Example: `jar 'com.h2database:h2', '>= 1.4'`
 
 And then execute `jbundle install`
 
@@ -47,14 +50,17 @@ Activiti::RepositoryService.createDeployment().
   deploy()
 ```
 
-## Enable Modeler in Rails
-add following line to config/routes.rb
-
-```
-mount JrubyActiviti::WebApp => "/activiti"
-```
-
+## Enable Activiti Modeler and Diagram Viewer in Rails
 visit `localhost:3000/activiti`
+
+Modeler
+`/activiti/modeler.html?modelId=your_model_id`
+
+View Process Definition in Diagram Viewer
+`/activiti/diagram-viewer/index.html?processDefinitionId=v1`
+
+View Process Instance in Diagram Viewer
+`/activiti/diagram-viewer/index.html?processDefinitionId=v1&processInstanceId=v2`
 
 ## Known Issue
 `org.activiti:activiti-modeler` includes `org.apache.xmlgraphics:batik-transcoder`, that depends on outdated `org.mozilla:rhino`, which conflicts with rubygem `therubyrhino`. So you must to install `nodejs` in your machine and comment `gem 'therubyrhino'` in `Gemfile`.
