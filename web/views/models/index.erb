@@ -14,7 +14,6 @@
 		<th>getCreateTime()</th>
 		<th>getLastUpdateTime()</th>
 		<th>Modeler</th>
-		<th>Deploy</th>
 	</tr>
 	<% for model in @models %>
 		<tr>
@@ -28,7 +27,6 @@
 			<td><%= model.getCreateTime() %></td>
 			<td><%= model.getLastUpdateTime() %></td>
 			<td><a href="<%= uri("/modeler.html?modelId=#{model.getId()}") %>">Edit in Modeler</a></td>
-			<td><a href="<%= uri("/models/#{model.getId()}/deploy") %>">Deploy</a></td>
 		</tr>
 	<% end %>
 </table>
