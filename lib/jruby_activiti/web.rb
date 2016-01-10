@@ -1,7 +1,14 @@
 require 'sinatra'
 
 module JrubyActiviti
-  class Web < Sinatra::Base
+  ConfigPath = "test/resources/activiti.cfg.xml"
+end
+
+require 'jruby_activiti'
+Activiti ||= JrubyActiviti.build_engine
+
+module JrubyActiviti
+  class Web < Sinatra::Application
     set :root, File.expand_path(File.dirname(__FILE__) + "/../../web")
     set :public_folder, proc { "#{root}/public" }
     set :views, proc { "#{root}/views" }
