@@ -20,7 +20,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "minitest", '~> 5.8'
-  spec.add_development_dependency "sinatra"
 
   spec.add_dependency "jbundler"
   spec.add_dependency "sinatra"
