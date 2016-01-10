@@ -8,13 +8,18 @@ Bundler.require "activiti-engine"
 Bundler.require "util"
 
 module JrubyActiviti
-  ConfigPath ||= "config/activiti.cfg.xml"
+  class << self
+    attr_accessor :path
+  end
 
   def self.build_engine
     return self if @engine
 
+    yield self if block_given?
+    self.path ||= "config/activiti.cfg.xml"
+
     configuration = Java::OrgActivitiEngine::ProcessEngineConfiguration.
-      createProcessEngineConfigurationFromResource(ConfigPath)
+      createProcessEngineConfigurationFromResource(self.path)
     @engine = configuration.buildProcessEngine
     self.set_activiti_const
 
