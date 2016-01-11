@@ -1,0 +1,36 @@
+<h1>ProcessDefinitions#index</h1>
+
+getKey() unique name for all versions this process definitions
+
+<table>
+  <tr>
+    <th>getId()</th>
+    <th>getDeploymentId()</th>
+    <th>getCategory()</th>
+    <th>getDescription()</th>
+    <th>getDiagramResourceName()</th>
+    <th>getKey()</th>
+    <th>getResourceName()</th>
+    <th>getTenantId()</th>
+    <th>getVersion()</th>
+    <th>hasGraphicalNotation()</th>
+    <th>hasStartFormKey()</th>
+    <th>isSuspended()</th>
+  </tr>
+  <% for process_definition in @process_definitions %>
+    <tr>
+      <td><%= process_definition.getId() %></td>
+      <td><%= process_definition.getDeploymentId() %></td>
+      <td><%= process_definition.getCategory() %></td>
+      <td><%= process_definition.getDescription() %></td>
+      <td><%= process_definition.getDiagramResourceName() %></td>
+      <td><%= process_definition.getKey() %></td>
+      <td><%= process_definition.getResourceName() %></td>
+      <td><%= process_definition.getTenantId() %></td>
+      <td><%= process_definition.getVersion() %></td>
+      <td><%= process_definition.hasGraphicalNotation() %></td>
+      <td><%= process_definition.hasStartFormKey() %></td>
+      <td><%= process_definition.isSuspended() %></td>
+    </tr>
+  <% end %>
+</table>

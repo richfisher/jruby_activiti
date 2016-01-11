@@ -85,8 +85,13 @@ module JrubyActiviti
         Activiti::RepositoryService,
         params[:model_id])
       deployer.deployModel()
-      
-      redirect uri('/models')
+
+      redirect uri('/process_definitions')
+    end
+
+    get "/process_definitions" do
+      @process_definitions = Activiti::RepositoryService.createProcessDefinitionQuery().list()
+      erb 'process_definitions/index'.to_sym
     end
   end
 end
