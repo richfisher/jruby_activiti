@@ -79,5 +79,14 @@ module JrubyActiviti
 
       redirect uri('/models')
     end
+
+    get "/models/:model_id/deploy" do
+      deployer = Java::Jrubyactiviti::ModelDeployer.new(
+        Activiti::RepositoryService,
+        params[:model_id])
+      deployer.deployModel()
+      
+      redirect uri('/models')
+    end
   end
 end

@@ -2,14 +2,6 @@ require 'test_helper'
 
 Bundler.require "h2"
 
-def assert_difference(cmd, target_count)
-  count1 = eval(cmd)
-  yield if block_given?
-  count2 = eval(cmd)
-
-  assert_equal target_count, count2-count1 
-end
-
 class IntegrationTest < Minitest::Test
   def before_setup
     @@deployed ||= deploy_vacation_request
@@ -58,7 +50,7 @@ class IntegrationTest < Minitest::Test
   def test_complete_task
     Activiti::RuntimeService.startProcessInstanceByKey("vacationRequest", task_variables);
 
-    tasks = Activiti::TaskService.createTaskQuery().taskCandidateGroup("management").list();
+    tasks = Activiti::TaskService.createTaskQuery().taskCandidateGroup("management").orderByTaskCreateTime().desc().list();
     task = tasks.first()
     task_variables = {
       "vacationApproved" => "false",
