@@ -1,0 +1,27 @@
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header" data-navbar="static">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-toggle collapsed navbar-livereload">
+        <a class="btn btn-inverse" href="">Back to App</a>
+      </div>
+      <a class="navbar-brand" href="<%= root_path %>">
+        <%= "JRuby Activiti" %>
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-menu">
+      <ul class="nav navbar-nav" data-navbar="static">
+        <% JrubyActiviti::Web.default_tabs.each do |title, url| %>
+          <li class="<%= current_path == url ? 'active' : '' %>">
+            <a href="<%= uri("/#{url}") %>"><%= title %></a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -8,8 +8,29 @@ module JrubyActiviti
     set :public_folder, proc { "#{root}/public" }
     set :views, proc { "#{root}/views" }
 
+    DEFAULT_TABS = {
+      "Dashboard"               => '',
+      "Models"                  => 'models',
+      "Process Definations"     => 'process_definitions',
+      "Process Instances"       => 'process_instances',
+    }
+
+    class << self
+      def default_tabs
+        DEFAULT_TABS
+      end
+    end
+
+    def root_path
+      '/activiti/'
+    end
+
+    def current_path
+      @current_path ||= request.path_info.gsub(/^\//,'')
+    end
+
     get "/" do
-      redirect uri('/models')
+      erb 'index'.to_sym
     end
 
     get "/service/model/:model_id/json" do

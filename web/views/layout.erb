@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/ico" href="<%= root_path %>images/favicon.ico" />
+    <link href="<%= root_path %>stylesheets/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="<%= root_path %>stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="<%= root_path %>javascripts/application.js"></script>
+    <meta name="google" content="notranslate" />
+  </head>
+  <body>
+    <%= erb :_nav %>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12" style="padding: 50px 0 0 0;">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
