@@ -114,5 +114,9 @@ module JrubyActiviti
       @process_definitions = Activiti::RepositoryService.createProcessDefinitionQuery().list()
       erb 'process_definitions/index'.to_sym
     end
+
+    get "/process_instances" do
+      erb 'process_instances/index'.to_sym
+    end
   end
 end

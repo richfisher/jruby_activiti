@@ -1,4 +1,4 @@
-<a href="<%= uri('/models/new') %>">New Model</a>
+<a href="<%= uri('/models/new') %>" class="btn btn-primary">New Model</a>
 
 <table class="table">
 	<tr>
@@ -25,8 +25,8 @@
 			<td><%= model.getCategory() %></td>
 			<td><%= model.getCreateTime() %></td>
 			<td><%= model.getLastUpdateTime() %></td>
-			<td><a href="<%= uri("/modeler.html?modelId=#{model.getId()}") %>">Edit in Modeler</a></td>
-			<td><a href="<%= uri("/models/#{model.getId()}/deploy") %>">Deploy</a></td>
+			<td><a href="<%= uri("/modeler.html?modelId=#{model.getId()}") %>" class="btn">Edit in Modeler</a></td>
+			<td><a href="<%= uri("/models/#{model.getId()}/deploy") %>" class="btn">Deploy</a></td>
 		</tr>
 	<% end %>
 </table>
