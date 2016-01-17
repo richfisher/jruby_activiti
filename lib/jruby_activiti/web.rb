@@ -9,10 +9,10 @@ module JrubyActiviti
     set :views, proc { "#{root}/views" }
 
     DEFAULT_TABS = {
-      "Dashboard"               => '',
+      # "Dashboard"               => '',
       "Models"                  => 'models',
       "Process Definations"     => 'process_definitions',
-      "Process Instances"       => 'process_instances',
+      # "Process Instances"       => 'process_instances',
     }
 
     class << self
@@ -30,7 +30,8 @@ module JrubyActiviti
     end
 
     get "/" do
-      erb 'index'.to_sym
+      # erb 'index'.to_sym
+      redirect uri('/models')
     end
 
     get "/service/model/:model_id/json" do
