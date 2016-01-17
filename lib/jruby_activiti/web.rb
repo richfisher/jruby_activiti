@@ -99,7 +99,7 @@ module JrubyActiviti
       init_json = '{"id":"canvas","resourceId":"canvas","stencilset":{"namespace":"http://b3mn.org/stencilset/bpmn2.0#"}}'
       Activiti::RepositoryService.addModelEditorSource(model.getId(), init_json.bytes)
 
-      redirect uri('/models')
+      redirect uri("/modeler.html?modelId=#{model.getId()}")
     end
 
     get "/models/:model_id/deploy" do
@@ -114,6 +114,11 @@ module JrubyActiviti
     get "/process_definitions" do
       @process_definitions = Activiti::RepositoryService.createProcessDefinitionQuery().list()
       erb 'process_definitions/index'.to_sym
+    end
+
+    get "/process_definitions/:id" do
+      @process_definition = Activiti::RepositoryService.createProcessDefinitionQuery().processDefinitionId(params[:id]).singleResult()
+      erb 'process_definitions/show'.to_sym
     end
 
     get "/process_instances" do
