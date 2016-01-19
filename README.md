@@ -21,7 +21,7 @@ It will create 4 files, edit the log4j.properties, config/activiti.cfg.xml as yo
 
 ```
 create  Jarfile
-create  log4j.properties
+create  config/log4j.properties
 create  config/activiti.cfg.xml
 create  config/initializers/jruby_activiti.rb
 route   mount JrubyActiviti::Web => '/activiti' if defined?(JrubyActiviti)

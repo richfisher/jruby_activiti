@@ -12,7 +12,7 @@ module JrubyActiviti
       end
 
       def create_log4j_config
-        copy_file "../../../../log4j.properties", "log4j.properties"
+        copy_file "../../../../config/log4j.properties", "config/log4j.properties"
       end
 
       def create_config

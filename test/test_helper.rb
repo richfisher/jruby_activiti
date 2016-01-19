@@ -5,7 +5,7 @@ require 'minitest/unit'
 require 'minitest/pride'
 
 Activiti = JrubyActiviti.build_engine do |engine|
-  engine.config_path = "test/resources/activiti.cfg.xml"
+  engine.config_path = "config/activiti.cfg.xml"
 end
 
 def assert_difference(cmd, target_count)

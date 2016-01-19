@@ -1,3 +1,6 @@
+include Java
+$CLASSPATH << "config"
+
 require "jruby_activiti/version"
 require "jruby_activiti/web"
 # require File.dirname(__FILE__) + '/../java/target/jrubyactiviti-2.0.jar'
