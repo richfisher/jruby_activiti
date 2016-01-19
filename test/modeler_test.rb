@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ModelerTest < Minitest::Test
   def setup
-    @modeler = Java::Jrubyactiviti::Modeler.new(Activiti::RepositoryService)
+    @modeler = Java::OrgJrubyactiviti::Modeler.new(Activiti::RepositoryService)
   end
 
   def create_model

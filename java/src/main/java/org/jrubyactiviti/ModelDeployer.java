@@ -1,4 +1,4 @@
-package jrubyactiviti;
+package org.jrubyactiviti;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;

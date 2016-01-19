@@ -1,4 +1,4 @@
-package jrubyactiviti;
+package org.jrubyactiviti;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -36,24 +36,24 @@ module JrubyActiviti
 
     get "/service/model/:model_id/json" do
       model = Activiti::RepositoryService.createModelQuery().modelId(params['model_id']).singleResult()
-      modeler = Java::Jrubyactiviti::Modeler.new(Activiti::RepositoryService)
+      modeler = Java::OrgJrubyactiviti::Modeler.new(Activiti::RepositoryService)
       modeler.show(model.getId()).to_s
     end
 
     get "/service/editor/stencilset" do
-      Java::Jrubyactiviti::StencilsetResource.getStencilset().to_s
+      Java::OrgJrubyactiviti::StencilsetResource.getStencilset().to_s
     end
 
     put "/service/model/:model_id/save" do
       model = Activiti::RepositoryService.createModelQuery().modelId(params['model_id']).singleResult()
       map = Activiti::Utils.hash_to_map(params)
-      modeler = Java::Jrubyactiviti::Modeler.new(Activiti::RepositoryService)
+      modeler = Java::OrgJrubyactiviti::Modeler.new(Activiti::RepositoryService)
       modeler.save(model.getId(), map)
       200
     end
 
     get "/service/process-definition/:process_definition_id/diagram-layout" do
-      diagramer = Java::Jrubyactiviti::ProcessDiagram.new(
+      diagramer = Java::OrgJrubyactiviti::ProcessDiagram.new(
         Activiti::RuntimeService,
         Activiti::RepositoryService,
         Activiti::HistoryService)
@@ -63,7 +63,7 @@ module JrubyActiviti
 
     # seems not be used
     get "/service/process-instance/:process_instance_id/diagram-layout" do
-      diagramer = Java::Jrubyactiviti::ProcessDiagram.new(
+      diagramer = Java::OrgJrubyactiviti::ProcessDiagram.new(
         Activiti::RuntimeService,
         Activiti::RepositoryService,
         Activiti::HistoryService)
@@ -72,7 +72,7 @@ module JrubyActiviti
     end
 
     get "/service/process-instance/:process_instance_id/highlights" do
-      highlighter = Java::Jrubyactiviti::ProcessInstanceHighlights.new(
+      highlighter = Java::OrgJrubyactiviti::ProcessInstanceHighlights.new(
         Activiti::RuntimeService,
         Activiti::RepositoryService,
         Activiti::HistoryService)
@@ -103,7 +103,7 @@ module JrubyActiviti
     end
 
     get "/models/:model_id/deploy" do
-      deployer = Java::Jrubyactiviti::ModelDeployer.new(
+      deployer = Java::OrgJrubyactiviti::ModelDeployer.new(
         Activiti::RepositoryService,
         params[:model_id])
       deployer.deployModel()

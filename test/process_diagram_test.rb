@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProcessDiagramTest < Minitest::Test
   def test_definition_diagram
-    diagramer = Java::Jrubyactiviti::ProcessDiagram.new(
+    diagramer = Java::OrgJrubyactiviti::ProcessDiagram.new(
       Activiti::RuntimeService,
       Activiti::RepositoryService,
       Activiti::HistoryService)
@@ -17,7 +17,7 @@ class ProcessDiagramTest < Minitest::Test
   end
 
   def test_instance_diagram
-    diagramer = Java::Jrubyactiviti::ProcessDiagram.new(
+    diagramer = Java::OrgJrubyactiviti::ProcessDiagram.new(
       Activiti::RuntimeService,
       Activiti::RepositoryService,
       Activiti::HistoryService)

@@ -1,4 +1,4 @@
-include Java
+require 'java'
 $CLASSPATH << "config"
 
 require "jruby_activiti/version"
@@ -21,7 +21,7 @@ module JrubyActiviti
     yield self if block_given?
     self.config_path ||= "config/activiti.cfg.xml"
 
-    configuration = Java::OrgActivitiEngine::ProcessEngineConfiguration.
+    configuration = org.activiti.engine.ProcessEngineConfiguration.
       createProcessEngineConfigurationFromResource(self.config_path)
     @engine = configuration.buildProcessEngine
     self.set_activiti_const
@@ -42,7 +42,7 @@ module JrubyActiviti
 
   module Utils
     def self.hash_to_map(hash)
-      map = Java::JavaUtil::HashMap.new
+      map = java.util.HashMap.new
       hash.each do |k,v|
         map.put(k.to_s,v.to_s)
       end

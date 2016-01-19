@@ -2,7 +2,7 @@ require 'test_helper'
 
 class InstanceHightsTest < Minitest::Test
   def test_instance_diagram
-    highlighter = Java::Jrubyactiviti::ProcessInstanceHighlights.new(
+    highlighter = Java::OrgJrubyactiviti::ProcessInstanceHighlights.new(
       Activiti::RuntimeService,
       Activiti::RepositoryService,
       Activiti::HistoryService)

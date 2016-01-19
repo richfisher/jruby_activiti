@@ -1,4 +1,4 @@
-package jrubyactiviti;
+package org.jrubyactiviti;
 
 import java.io.InputStream;
 import org.activiti.engine.ActivitiException;
