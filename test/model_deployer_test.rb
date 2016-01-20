@@ -13,7 +13,7 @@ class ModelDeployerTest < Minitest::Test
 
   def test_deploy
     model = create_model
-    deployer = Java::OrgJrubyactiviti::ModelDeployer.new(Activiti::RepositoryService, model.getId())
+    deployer = org.jrubyactiviti.ModelDeployer.new(Activiti::RepositoryService, model.getId())
 
     assert_difference 'Activiti::RepositoryService.createProcessDefinitionQuery().count()', 1 do
       deployer.deployModel()
