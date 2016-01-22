@@ -40,12 +40,12 @@ module JrubyActiviti
     @engine = configuration.buildProcessEngine
   end
 
-  def self.const_missing(name)
-    if name == 'Engine' || SERVICES.include?(name.to_s)
+  def self.const_missing(const)
+    const_name = const.to_s
+    if const_name == 'Engine' || SERVICES.include?(const_name)
       self.get_engine_instance
       self.set_activiti_const
-
-      return const_get(name.to_s)
+      return const_get(const_name)
     else
       super
     end
