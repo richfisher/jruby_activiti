@@ -15,29 +15,47 @@ module JrubyActiviti
     attr_accessor :config_path
   end
 
-  def self.build_engine
-    return self if @engine
+  SERVICES = [
+    'RepositoryService',
+    'RuntimeService',
+    'TaskService',
+    'ManagementService',
+    'IdentityService',
+    'HistoryService',
+    'FormService'
+  ]
 
+  def self.build_engine
     yield self if block_given?
     self.config_path ||= "config/activiti.cfg.xml"
-
-    configuration = org.activiti.engine.ProcessEngineConfiguration.
-      createProcessEngineConfigurationFromResource(self.config_path)
-    @engine = configuration.buildProcessEngine
-    self.set_activiti_const
 
     return self
   end
 
+  def self.get_engine_instance
+    return if @engine
+
+    configuration = org.activiti.engine.ProcessEngineConfiguration.
+      createProcessEngineConfigurationFromResource(self.config_path)
+    @engine = configuration.buildProcessEngine
+  end
+
+  def self.const_missing(name)
+    if name == 'Engine' || SERVICES.include?(name.to_s)
+      self.get_engine_instance
+      self.set_activiti_const
+
+      return const_get(name.to_s)
+    else
+      super
+    end
+  end
+
   def self.set_activiti_const
     const_set 'Engine', @engine
-    const_set 'RepositoryService', @engine.getRepositoryService()
-    const_set 'RuntimeService', @engine.getRuntimeService()
-    const_set 'TaskService', @engine.getTaskService()
-    const_set 'ManagementService', @engine.getManagementService()
-    const_set 'IdentityService', @engine.getIdentityService()
-    const_set 'HistoryService', @engine.getHistoryService()
-    const_set 'FormService', @engine.getFormService()
+    for name in SERVICES
+      const_set name, @engine.send("get#{name}")
+    end
   end
 
   module Utils

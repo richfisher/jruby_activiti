@@ -62,11 +62,10 @@ View Process Definition in Diagram Viewer
 View Process Instance in Diagram Viewer
 `/activiti/diagram-viewer/index.html?processDefinitionId=v1&processInstanceId=v2`
 
-## Known Issue
-`org.activiti:activiti-modeler` includes `org.apache.xmlgraphics:batik-transcoder`, that depends on outdated `org.mozilla:rhino`, which conflicts with rubygem `therubyrhino`. So you must to install `nodejs` in your machine and comment `gem 'therubyrhino'` in `Gemfile`.
+## Known Issues
+1. NoMethodError: undefined method `useMozillaStackStyle' for Java::OrgMozillaJavascript::RhinoException:Class
 
-## Thanks
-Inspired by https://github.com/boberetezeke/jruby-activiti
+`org.activiti:activiti-modeler` includes `org.apache.xmlgraphics:batik-transcoder`, that depends on outdated `org.mozilla:rhino`, which conflicts with rubygem `therubyrhino`. So you must to install `nodejs` in your machine and comment `gem 'therubyrhino'` in `Gemfile`.
 
 ## Contributing
 
