@@ -2,6 +2,8 @@
 
 Integrate Activiti BPM in JRuby/Rails, including Activiti Engine, Modeler and Diagram Viewer.
 
+Online demo: https://jruby-activiti-demo.herokuapp.com/activiti
+
 ## Test Environment
 JRuby-9.0.4.0, Activiti-5.19.0
 
