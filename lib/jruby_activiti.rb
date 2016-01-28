@@ -3,6 +3,7 @@ $CLASSPATH << "config"
 
 require "jruby_activiti/version"
 require "jruby_activiti/web"
+
 # require File.dirname(__FILE__) + '/../java/target/jrubyactiviti-2.0.jar'
 require File.dirname(__FILE__) + '/jar/jrubyactiviti-2.0.jar'
 
@@ -25,7 +26,7 @@ module JrubyActiviti
     'FormService'
   ]
 
-  def self.build_engine
+  def self.setup
     yield self if block_given?
     self.config_path ||= "config/activiti.cfg.xml"
 
